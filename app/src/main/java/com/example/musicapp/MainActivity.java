@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
@@ -37,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private final Track [] Tracks = new Track[]{
-            new Track(1, "Helena", "+44", 123, 2),
-            new Track(2, "Rock_me", "+91", 234, 3),
-            new Track(3, "Black_Parade", "+44", 456, 4),
+            new Track(1, "Helena", "+44", 123, 2,false),
+            new Track(2, "Rock_me", "+91", 234, 3,false),
+            new Track(3, "Black_Parade", "+44", 456, 4,true),
     };
 
 
@@ -50,12 +53,15 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        listView = findViewById(R.id.listView);
 
-        listView.setAdapter(
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Tracks));
-
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(new Track_Adapter(this, Tracks));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> av, View v, int i, long l) {
+                Toast.makeText(MainActivity.this, "Clicked item: " + Tracks[i],
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-
 }

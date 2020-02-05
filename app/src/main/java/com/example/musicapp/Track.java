@@ -1,4 +1,4 @@
-package com.example.musicapp.;
+package com.example.musicapp;
 
 public class Track {
     private int commontrack_id;
@@ -6,13 +6,15 @@ public class Track {
     private String country_code;
     private int position;
     private int date_liked;
+    private boolean favourite;
 
-    public Track(int commontrack_id, String track_name, String country_code, int position, int date_liked) {
+    public Track(int commontrack_id, String track_name, String country_code, int position, int date_liked, boolean favourite) {
         this.commontrack_id = commontrack_id;
         this.track_name = track_name;
         this.country_code = country_code;
         this.position = position;
         this.date_liked = date_liked;
+        this.favourite = favourite;
     }
 
     public int getCommontrack_id() {
@@ -35,8 +37,13 @@ public class Track {
         return date_liked;
     }
 
+    public boolean isFavourite() {
+        return favourite;
+    }
+
     @Override
     public String toString() {
-        return "Track{}";
+        return this.track_name;
     }
+
 }
