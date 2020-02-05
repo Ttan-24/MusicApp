@@ -8,10 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
+    private ListView listView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private final Track [] Tracks = new Track[]{
+            new Track(1, "Helena", "+44", 123, 2),
+            new Track(2, "Rock_me", "+91", 234, 3),
+            new Track(3, "Black_Parade", "+44", 456, 4),
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        listView = findViewById(R.id.listView);
+
+        listView.setAdapter(
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Tracks));
+
     }
+
 
 }
