@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {
                 Toast.makeText(MainActivity.this, "Clicked item: " + Countries[i],
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
                 //intent.putExtra("name",Tracks[i]);
                 startActivity(intent);
             }
