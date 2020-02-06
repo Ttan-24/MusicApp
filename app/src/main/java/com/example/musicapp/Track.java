@@ -41,6 +41,10 @@ public class Track {
         return favourite;
     }
 
+    /*public void setFavourite(boolean choice) {
+        favourite = choice;
+    } */
+
     @Override
     public String toString() {
         return this.track_name;

@@ -2,24 +2,23 @@ package com.example.musicapp;
 
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+//import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
+//import androidx.annotation.NonNull;
 
-import android.view.MenuItem;
+//import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+//import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView mTextMessage;
-    private ListView listView;
+    //private TextView mTextMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+
+    /*private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         }
-    };
+    }; */
 
     private final Track [] Tracks = new Track[]{
             new Track(1, "Helena", "+44", 123, 2,false),
@@ -45,14 +44,16 @@ public class MainActivity extends AppCompatActivity {
             new Track(3, "Black_Parade", "+44", 456, 4,true),
     };
 
+    private ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //BottomNavigationView navView = findViewById(R.id.nav_view);
+        //mTextMessage = findViewById(R.id.message);
+        //navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new Track_Adapter(this, Tracks));

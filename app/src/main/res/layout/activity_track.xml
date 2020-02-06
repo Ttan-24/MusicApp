@@ -6,20 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/ImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <CheckBox
+        android:id="@+id/checkbox"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/favourite_icon" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/track_name"
         android:text="TrackName"
         android:textSize="20sp"
-        android:layout_toLeftOf="@id/ImageButton"
-        android:layout_toStartOf="@id/ImageButton"
+        android:layout_toLeftOf="@id/checkbox"
+        android:layout_toStartOf="@id/checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -28,9 +27,42 @@
         android:text="Common_id"
         android:textSize="16sp"
         android:layout_marginTop="12dp"
-        android:layout_toLeftOf="@id/ImageButton"
-        android:layout_toStartOf="@id/ImageButton"
+        android:layout_toLeftOf="@id/checkbox"
+        android:layout_toStartOf="@id/checkbox"
         android:layout_below="@id/track_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/country_code"
+        android:text="Country_Code"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:layout_toLeftOf="@id/checkbox"
+        android:layout_toStartOf="@id/checkbox"
+        android:layout_below="@id/common_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/position"
+        android:text="Position"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:layout_toLeftOf="@id/checkbox"
+        android:layout_toStartOf="@id/checkbox"
+        android:layout_below="@id/country_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/date_liked"
+        android:text="Date_Liked"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:layout_toLeftOf="@id/checkbox"
+        android:layout_toStartOf="@id/checkbox"
+        android:layout_below="@id/position"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

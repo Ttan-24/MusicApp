@@ -1,14 +1,12 @@
 package com.example.musicapp;
 
 import android.content.Context;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,11 +32,29 @@ public class Track_Adapter extends ArrayAdapter<Track> {
 
         final Track track = getItem(position);
 
-        CheckBox ImageButton = view.findViewById(R.id.ImageButton);
-        TextView track_name = view.findViewById(R.id.track_name);
-        TextView common_id = view.findViewById(R.id.common_id);
+        CheckBox checkbox = view.findViewById(R.id.checkbox);
+        TextView trackName = view.findViewById(R.id.track_name);
+        TextView commonId = view.findViewById(R.id.common_id);
+        TextView countryCode = view.findViewById(R.id.country_code);
+        TextView pos = view.findViewById(R.id.position);
+        TextView dateLiked = view.findViewById(R.id.date_liked);
 
-        ImageButton.setChecked(track.isFavourite());
+        checkbox.setChecked(track.isFavourite());
+        trackName.setText(track.getTrack_name());
+        commonId.setText(track.getCommontrack_id());
+        countryCode.setText(track.getCountry_code());
+        pos.setText(track.getPosition());
+        dateLiked.setText(track.getDate_liked());
+
+
+        checkbox.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override public void onCheckedChanged(CompoundButton cb, boolean b) {
+                        Toast.makeText(getContext(), "Checked " + track + " to: " + b, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        /*ImageButton.setChecked(track.isFavourite());
         track_name.setText(track.getTrack_name());
         common_id.setText(track.getCommontrack_id());
 
@@ -47,8 +63,23 @@ public class Track_Adapter extends ArrayAdapter<Track> {
                     @Override public void onCheckedChanged(CompoundButton cb, boolean b) {
                         Toast.makeText(getContext(), "Checked " + track + " to: " + b, Toast.LENGTH_SHORT).show();
                     }
-                });
+                }); */
 
+        /*ImageButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View button) {
+                //Set the button's appearance
+                button.setSelected(!button.isSelected());
+
+                if (button.isSelected()) {
+                    track.setFavourite(true);
+                } else {
+                    track.setFavourite(false);
+                }
+
+            }
+
+        });  */
         return view;
     }
 
