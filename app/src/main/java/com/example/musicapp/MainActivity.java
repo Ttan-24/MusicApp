@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 //import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 //import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }; */
 
+
     private final Track [] Tracks = new Track[]{
             new Track(1, "Helena", "+44", 123, 2,false),
             new Track(2, "Rock_me", "+91", 234, 3,false),
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private ListView listView;
-
+    //private ListView listView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,12 @@ public class MainActivity extends AppCompatActivity {
         //mTextMessage = findViewById(R.id.message);
         //navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+
+
+
+
         listView = (ListView) findViewById(R.id.listView);
+
         listView.setAdapter(new Track_Adapter(this, Tracks));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
