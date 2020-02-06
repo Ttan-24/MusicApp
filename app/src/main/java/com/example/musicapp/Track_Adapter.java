@@ -42,10 +42,9 @@ public class Track_Adapter extends ArrayAdapter<Track> {
         checkbox.setChecked(track.isFavourite());
         trackName.setText(track.getTrack_name());
         commonId.setText(Integer.toString(track.getCommon_id()));
-        //commonId.setInputType(track.getCommon_id());
         countryCode.setText(track.getCountry_code());
-        pos.setInputType(track.getPosition());
-        dateLiked.setInputType(track.getDate_liked());
+        pos.setText(Integer.toString(track.getPosition()));
+        dateLiked.setText(Integer.toString(track.getDate_liked()));
 
 
         checkbox.setOnCheckedChangeListener(

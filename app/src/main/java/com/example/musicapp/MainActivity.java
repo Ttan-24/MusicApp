@@ -1,5 +1,6 @@
 package com.example.musicapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 //import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {
                 Toast.makeText(MainActivity.this, "Clicked item: " + Tracks[i],
                         Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),Track_Display.class);
+                //intent.putExtra("name",Tracks[i]);
+                startActivity(intent);
             }
         });
     }
