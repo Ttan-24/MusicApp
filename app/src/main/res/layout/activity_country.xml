@@ -14,8 +14,8 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/track_name"
-        android:text="TrackName"
+        android:id="@+id/country_name"
+        android:text="Country Name"
         android:textSize="20sp"
         android:layout_toLeftOf="@id/checkbox"
         android:layout_toStartOf="@id/checkbox"
@@ -23,32 +23,20 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/common_id"
-        android:text="Common_id"
-        android:textSize="16sp"
-        android:layout_marginTop="12dp"
-        android:layout_toLeftOf="@id/checkbox"
-        android:layout_toStartOf="@id/checkbox"
-        android:layout_below="@id/track_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
         android:id="@+id/country_code"
-        android:text="Country_Code"
+        android:text="Country Code"
         android:textSize="16sp"
         android:layout_marginTop="12dp"
         android:layout_toLeftOf="@id/checkbox"
         android:layout_toStartOf="@id/checkbox"
-        android:layout_below="@id/common_id"
+        android:layout_below="@id/country_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/position"
-        android:text="Position"
-        android:textSize="16sp"
-        android:layout_marginTop="12dp"
+        android:id="@+id/wikipedia"
+        android:text="wikipedia"
+        android:textSize="20sp"
         android:layout_toLeftOf="@id/checkbox"
         android:layout_toStartOf="@id/checkbox"
         android:layout_below="@id/country_code"
@@ -56,16 +44,23 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/date_liked"
-        android:text="Date_Liked"
-        android:textSize="16sp"
-        android:layout_marginTop="12dp"
+        android:id="@+id/lat"
+        android:text="latitude"
+        android:textSize="20sp"
         android:layout_toLeftOf="@id/checkbox"
         android:layout_toStartOf="@id/checkbox"
-        android:layout_below="@id/position"
+        android:layout_below="@id/wikipedia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-
+    <TextView
+        android:id="@+id/lng"
+        android:text="longitude"
+        android:textSize="20sp"
+        android:layout_toLeftOf="@id/checkbox"
+        android:layout_toStartOf="@id/checkbox"
+        android:layout_below="@id/lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout >
