@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="12dp"
     android:descendantFocusability="blocksDescendants"
     android:layout_width="match_parent"
@@ -8,6 +8,7 @@
 
     <CheckBox
         android:id="@+id/checkbox"
+        android:text="CheckBox"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
