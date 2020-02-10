@@ -72,6 +72,7 @@ public class MainActivity2 extends AppCompatActivity {
                 Toast.makeText(MainActivity2.this, "Clicked item: " + Countries[i],    // If i clicked on a country then it will take me to song tracks
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                intent.putExtra("Code",Countries[i].getCountry_code());
                 //intent.putExtra("name",Tracks[i]);
                 startActivity(intent);
             }
