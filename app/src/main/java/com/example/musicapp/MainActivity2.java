@@ -46,9 +46,9 @@ public class MainActivity2 extends AppCompatActivity {
     }; */
 
     private final Country [] Countries = new Country[]{
-            new Country("1", "USA", "+44", 123, 2,false),
-            new Country("2", "South Korea", "+91", 234, 3,false),
-            new Country("3", "Japan", "+44", 456, 4,true),
+            new Country("PL", "USA", "+44", 123, 2,false),
+            new Country("ES", "South Korea", "+91", 234, 3,false),
+            new Country("IL", "Japan", "+44", 456, 4,true),
     };
 
 
