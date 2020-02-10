@@ -12,8 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -48,8 +51,10 @@ public class MainActivity2 extends AppCompatActivity {
             new Country("3", "Japan", "+44", 456, 4,true),
     };
 
+
     private ListView listView;
    // private TextView TextName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +76,8 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
     }
 
