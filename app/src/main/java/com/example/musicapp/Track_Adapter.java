@@ -7,10 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.example.musicapp.data.BlogRoomDatabase;
 
 // the Track_Adapter can only be used to manage items of type Track
 public class Track_Adapter extends ArrayAdapter<Track> {
@@ -32,14 +35,14 @@ public class Track_Adapter extends ArrayAdapter<Track> {
 
         final Track track = getItem(position);
 
-        CheckBox checkbox = view.findViewById(R.id.checkbox);
+        ImageButton imageButton = view.findViewById(R.id.imageButton2);
         TextView trackName = view.findViewById(R.id.track_name);
         TextView commonId = view.findViewById(R.id.common_id);
         TextView countryCode = view.findViewById(R.id.country_code);
         TextView pos = view.findViewById(R.id.position);
         TextView dateLiked = view.findViewById(R.id.date_liked);
 
-        checkbox.setChecked(track.isFavourite());
+        imageButton.setClickable(track.isFavourite());
         trackName.setText(track.getTrack_name());
         commonId.setText(Integer.toString(track.getCommon_id()));
         countryCode.setText(track.getCountry_code());
@@ -47,12 +50,20 @@ public class Track_Adapter extends ArrayAdapter<Track> {
         dateLiked.setText(Integer.toString(track.getDate_liked()));
 
 
-        checkbox.setOnCheckedChangeListener(
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Checked " + track + " to: " , Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        /*imageButton.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override public void onCheckedChanged(CompoundButton cb, boolean b) {
                         Toast.makeText(getContext(), "Checked " + track + " to: " + b, Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
 
         /*ImageButton.setChecked(track.isFavourite());
         track_name.setText(track.getTrack_name());

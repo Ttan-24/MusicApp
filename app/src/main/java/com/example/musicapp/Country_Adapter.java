@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,14 +35,14 @@ public class Country_Adapter extends ArrayAdapter<Country> {
 
         final Country country = getItem(position);
 
-        final CheckBox checkbox = view.findViewById(R.id.checkbox);
+        final ImageButton imageButton = view.findViewById(R.id.imageButton);
         TextView countryName = view.findViewById(R.id.country_name);
         TextView codeCountry = view.findViewById(R.id.country_code);
         TextView wikipedia = view.findViewById(R.id.wikipedia);
         TextView lat = view.findViewById(R.id.lat);
         TextView lng = view.findViewById(R.id.lng);
 
-        checkbox.setChecked(country.isCountry_favourite());
+        imageButton.setClickable(country.isCountry_favourite());
         countryName.setText(country.getCountry_name());
         codeCountry.setText(country.getCountry_code());
         wikipedia.setText(country.getWikipedia());
@@ -49,23 +50,33 @@ public class Country_Adapter extends ArrayAdapter<Country> {
         lng.setText(Float.toString(country.getLng()));
 
 
-        checkbox.setOnCheckedChangeListener(
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Checked " + country + " to: ", Toast.LENGTH_SHORT).show();
+                BlogRoomDatabase
+                        .getDatabase(getContext())
+                        .blogDao().insert(country);//)new Country("1",country.,"http://wikipedia.com",0.0,0.0,true));//Country(String country_code, String country_name, String wikipedia, float lat, float lng, boolean country_favourite) {
+
+            }
+        });
+
+
+        /*imageButton.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override public void onCheckedChanged(CompoundButton cb, boolean b) {
                         if (b) {
-
-
-                        Toast.makeText(getContext(), "Checked " + country + " to: " + b, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Checked " + country + " to: " + b, Toast.LENGTH_SHORT).show();
                         BlogRoomDatabase
                                 .getDatabase(getContext())
                                 .blogDao().insert(country);//)new Country("1",country.,"http://wikipedia.com",0.0,0.0,true));//Country(String country_code, String country_name, String wikipedia, float lat, float lng, boolean country_favourite) {
 
                         }
                         else {
-                            
+
                         }
                     }
-                });
+                });*/
 
         /*ImageButton.setChecked(track.isFavourite());
         track_name.setText(track.getTrack_name());
