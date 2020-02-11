@@ -34,7 +34,7 @@ public class Country_Adapter extends ArrayAdapter<Country> {
         final Country country = getItem(position);
 
         final ImageButton imageButton = view.findViewById(R.id.imageButton);
-        TextView countryName = view.findViewById(R.id.country_name);
+        final TextView countryName = view.findViewById(R.id.country_name);
         TextView codeCountry = view.findViewById(R.id.country_code);
         TextView wikipedia = view.findViewById(R.id.wikipedia);
         TextView lat = view.findViewById(R.id.lat);
@@ -51,10 +51,27 @@ public class Country_Adapter extends ArrayAdapter<Country> {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Checked " + country + " to: ", Toast.LENGTH_SHORT).show();
-                BlogRoomDatabase
-                        .getDatabase(getContext())
-                        .blogDao().insert(country);//)new Country("1",country.,"http://wikipedia.com",0.0,0.0,true));//Country(String country_code, String country_name, String wikipedia, float lat, float lng, boolean country_favourite) {
+                boolean isFavourite = country.isCountry_favourite();
+
+                if (isFavourite) {
+                    imageButton.setImageResource(R.drawable.ic_favorite_border_red);
+                    country.setCountry_favourite(false);
+                    Toast.makeText(getContext(), "Deleted " + country + " to: ", Toast.LENGTH_SHORT).show();
+                    BlogRoomDatabase
+                            .getDatabase(getContext())
+                            .blogDao().delete(country);
+
+
+                } else {
+                    imageButton.setImageResource(R.drawable.favourite_icon);
+                    country.setCountry_favourite(true);
+                    Toast.makeText(getContext(), "Checked " + country + " to: ", Toast.LENGTH_SHORT).show();
+
+                    BlogRoomDatabase
+                            .getDatabase(getContext())
+                            .blogDao().insert(country);//)new Country("1",country.,"http://wikipedia.com",0.0,0.0,true));//Country(String country_code, String country_name, String wikipedia, float lat, float lng, boolean country_favourite) {
+
+                }
 
             }
         });
@@ -104,5 +121,7 @@ public class Country_Adapter extends ArrayAdapter<Country> {
         });  */
         return view;
     }
+
+
 
 }

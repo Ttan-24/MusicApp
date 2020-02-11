@@ -4,12 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.musicapp.data.BlogRoomDatabase;
 import com.example.musicapp.data.Country;
+
+import java.util.List;
 
 //import com.google.android.material.bottomnavigation.BottomNavigationView;
 //import androidx.annotation.NonNull;
@@ -51,6 +55,18 @@ public class MainActivity2 extends AppCompatActivity {
             new Country("IL", "Japan", "+44", 456, 4,false),
     };
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        List<Country> allEntries = BlogRoomDatabase
+                .getDatabase(this)
+                .blogDao()
+                .getAllEntries();
+        final ArrayAdapter entriesAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, allEntries);
+        listView.setAdapter(entriesAdapter);
+    }
 
     private ListView listView;
    // private TextView TextName;

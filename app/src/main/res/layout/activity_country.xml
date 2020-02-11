@@ -66,6 +66,6 @@
         android:layout_alignParentRight="true"
         android:adjustViewBounds="false"
         android:clickable="true"
-        app:srcCompat="@drawable/favourite_icon" />
+        app:srcCompat="@drawable/ic_favorite_border_red" />
 
 </RelativeLayout >

@@ -9,11 +9,16 @@ import java.util.List;
 
 @Dao
 public interface BlogDao {
+
+
     @Insert
     void insert(Country entry);
 
     @Query("SELECT * FROM entries ORDER BY country_code")
     List<Country> getAllEntries();
+
+    @Query("SELECT * from entries where country_favourite == 1")
+    public boolean isFavorite(String country_name);
 
     @Delete
     void delete(Country entry);
