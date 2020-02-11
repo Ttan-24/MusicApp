@@ -1,9 +1,6 @@
 package com.example.musicapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,16 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -42,10 +30,10 @@ public class MainActivity3 extends AppCompatActivity {
         stringCountry = getExtraData.getStringExtra("Code");
         Log.d("tag", "onCreate: " + stringCountry);
 
-        String urlAddress = createUrl(stringCountry);
-        Log.d("myurl", "urlAddress: " + urlAddress);
+        //String urlAddress = createUrl(stringCountry);
+        //Log.d("myurl", "urlAddress: " + urlAddress);
 
-        new DownloadWebpageTask().execute(urlAddress);
+        //new DownloadWebpageTask().execute(urlAddress);
         //BottomNavigationView navView = findViewById(R.id.nav_view);
         //mTextMessage = findViewById(R.id.message);
         //navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -67,7 +55,7 @@ public class MainActivity3 extends AppCompatActivity {
 
     }
 
-    private String processData(String json) {
+    /*private String processData(String json) {
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONArray rows = jsonObject.getJSONArray("rows");
@@ -97,15 +85,15 @@ public class MainActivity3 extends AppCompatActivity {
         } */
 
 
-        return "https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&apikey=818ca763742f1f51d06c0ec29c1b2211&country=" +
-                stringCountry;
+       // return "https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&apikey=818ca763742f1f51d06c0ec29c1b2211&country=" +
+      //          stringCountry;
 
 
 
 
-    }
+    //}
 
-    private String downloadUrl(final String urlAddress)
+    /*private String downloadUrl(final String urlAddress)
             throws IOException {
         InputStream inputStream = null;
 
@@ -151,6 +139,6 @@ public class MainActivity3 extends AppCompatActivity {
             // ... and finally, update the TextView accordingly
             //textViewJSON.setText(result);
         }
-    }
+    } */
 
 }

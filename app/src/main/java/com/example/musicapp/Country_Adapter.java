@@ -31,7 +31,7 @@ public class Country_Adapter extends ArrayAdapter<Country> {
 
         final Country country = getItem(position);
 
-        CheckBox checkbox = view.findViewById(R.id.checkbox);
+        final CheckBox checkbox = view.findViewById(R.id.checkbox);
         TextView countryName = view.findViewById(R.id.country_name);
         TextView codeCountry = view.findViewById(R.id.country_code);
         TextView wikipedia = view.findViewById(R.id.wikipedia);
@@ -50,6 +50,9 @@ public class Country_Adapter extends ArrayAdapter<Country> {
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override public void onCheckedChanged(CompoundButton cb, boolean b) {
                         Toast.makeText(getContext(), "Checked " + country + " to: " + b, Toast.LENGTH_SHORT).show();
+                        BlogRoomDatabase
+                                .getDatabase(getContext())
+                                .blogDao().insert(country);//)new Country("1",country.,"http://wikipedia.com",0.0,0.0,true));//Country(String country_code, String country_name, String wikipedia, float lat, float lng, boolean country_favourite) {
                     }
                 });
 

@@ -2,24 +2,22 @@ package com.example.musicapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-//import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.appcompat.app.AppCompatActivity;
-//import androidx.annotation.NonNull;
-
-//import android.view.MenuItem;
-
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
+//import com.google.android.material.bottomnavigation.BottomNavigationView;
+//import androidx.annotation.NonNull;
+//import android.view.MenuItem;
+
+/*
+
+Activity 1 - Reads from room DB but only populates listview with favourited countries, has add country button
+Activity 2 - Shows all countries, with favourite check boxes, checking/unchecked boxes updated countries table.
+ */
 
 public class MainActivity2 extends AppCompatActivity {
     //private TextView mTextMessage;
@@ -48,7 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
     private final Country [] Countries = new Country[]{
             new Country("PL", "USA", "+44", 123, 2,false),
             new Country("ES", "South Korea", "+91", 234, 3,false),
-            new Country("IL", "Japan", "+44", 456, 4,true),
+            new Country("IL", "Japan", "+44", 456, 4,false),
     };
 
 

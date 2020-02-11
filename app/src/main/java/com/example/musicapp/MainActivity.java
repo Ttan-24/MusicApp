@@ -1,14 +1,15 @@
 package com.example.musicapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +32,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        List<Country> allEntries = BlogRoomDatabase
+                .getDatabase(this)
+                .blogDao()
+                .getAllEntries();
+        final ArrayAdapter entriesAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, allEntries);
+        listView.setAdapter(entriesAdapter);
     }
 
     //public void selectCountry(View view) {
