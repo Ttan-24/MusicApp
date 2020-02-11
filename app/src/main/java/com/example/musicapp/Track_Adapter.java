@@ -5,15 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-
-import com.example.musicapp.data.BlogRoomDatabase;
 
 // the Track_Adapter can only be used to manage items of type Track
 public class Track_Adapter extends ArrayAdapter<Track> {
