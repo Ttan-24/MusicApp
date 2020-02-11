@@ -52,10 +52,18 @@ public class Country_Adapter extends ArrayAdapter<Country> {
         checkbox.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override public void onCheckedChanged(CompoundButton cb, boolean b) {
+                        if (b) {
+
+
                         Toast.makeText(getContext(), "Checked " + country + " to: " + b, Toast.LENGTH_SHORT).show();
                         BlogRoomDatabase
                                 .getDatabase(getContext())
                                 .blogDao().insert(country);//)new Country("1",country.,"http://wikipedia.com",0.0,0.0,true));//Country(String country_code, String country_name, String wikipedia, float lat, float lng, boolean country_favourite) {
+
+                        }
+                        else {
+                            
+                        }
                     }
                 });
 
