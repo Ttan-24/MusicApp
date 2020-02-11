@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.musicapp.data.BlogRoomDatabase;
+import com.example.musicapp.data.Country;
+
 public class Country_Adapter extends ArrayAdapter<Country> {
     public Country_Adapter (Context context, Country[] Countries){
         super(context, R.layout.activity_country, Countries);

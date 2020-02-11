@@ -1,4 +1,4 @@
-package com.example.musicapp;
+package com.example.musicapp.data;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
