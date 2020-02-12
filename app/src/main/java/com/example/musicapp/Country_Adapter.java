@@ -52,7 +52,7 @@ public class Country_Adapter extends ArrayAdapter<Country> {
             @Override
             public void onClick(View v) {
                 boolean isFavourite = country.isCountry_favourite();
-
+                 //if (country.isCountry_favourite() == 1)
                 if (isFavourite) {
                     imageButton.setImageResource(R.drawable.ic_favorite_border_red);
                     country.setCountry_favourite(false);
