@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.musicapp.data.BlogDao;
 import com.example.musicapp.data.BlogRoomDatabase;
 import com.example.musicapp.data.Country;
 
@@ -50,10 +51,18 @@ public class MainActivity2 extends AppCompatActivity {
     }; */
 
     private final Country [] Countries = new Country[]{
-            new Country("PL", "USA", "+44", 123, 2,false),
+            new Country("PL", "USA", "+44", 123, 2,true),
             new Country("ES", "South Korea", "+91", 234, 3,false),
-            new Country("IL", "Japan", "+44", 456, 4,false),
+            new Country("IL", "Japan", "+44", 456, 4,true),
     };
+
+    // access database here?
+   /* public void accessDatabase() {
+
+        BlogRoomDatabase
+                .getDatabase(getCo())
+                .blogDao().delete(country);
+    } */
 
    /* @Override
     protected void onResume() {

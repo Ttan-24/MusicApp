@@ -47,6 +47,12 @@ public class Country_Adapter extends ArrayAdapter<Country> {
         lat.setText(Float.toString(country.getLat()));
         lng.setText(Float.toString(country.getLng()));
 
+        boolean isFavourite = country.isCountry_favourite();
+        if (isFavourite)
+        {
+            imageButton.setImageResource(R.drawable.favourite_icon);
+        }
+
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
