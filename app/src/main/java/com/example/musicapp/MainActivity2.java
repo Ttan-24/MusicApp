@@ -55,7 +55,7 @@ public class MainActivity2 extends AppCompatActivity {
             new Country("IL", "Japan", "+44", 456, 4,false),
     };
 
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
 
@@ -66,7 +66,7 @@ public class MainActivity2 extends AppCompatActivity {
         final ArrayAdapter entriesAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, allEntries);
         listView.setAdapter(entriesAdapter);
-    }
+    }*/
 
     private ListView listView;
    // private TextView TextName;

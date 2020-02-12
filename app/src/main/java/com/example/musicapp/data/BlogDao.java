@@ -17,8 +17,8 @@ public interface BlogDao {
     @Query("SELECT * FROM entries ORDER BY country_code")
     List<Country> getAllEntries();
 
-    @Query("SELECT * from entries where country_favourite == 1")
-    public boolean isFavorite(String country_name);
+    //@Query("SELECT * from entries where country_favourite == 1")
+    //public boolean isFavorite(String country_name);
 
     @Delete
     void delete(Country entry);
