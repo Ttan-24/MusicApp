@@ -7,11 +7,13 @@ import androidx.room.Query;
 
 import java.util.List;
 
+import static androidx.room.OnConflictStrategy.REPLACE;
+
 @Dao
 public interface BlogDao {
 
 
-    @Insert
+    @Insert (onConflict = REPLACE)
     void insert(Country entry);
 
     @Query("SELECT * FROM entries ORDER BY country_code")

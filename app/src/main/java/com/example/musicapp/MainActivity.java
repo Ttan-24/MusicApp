@@ -3,10 +3,12 @@ package com.example.musicapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(toy);
             }
         });
-
     }
     @Override
     protected void onResume() {
@@ -45,10 +46,32 @@ public class MainActivity extends AppCompatActivity {
                 .getDatabase(this)
                 .blogDao()
                 .getAllEntries();
+        Country[] countryArray = new Country[allEntries.size()];
+        int i = 0;
+        for (Country country : allEntries
+             ) {
+            countryArray[i] = country;
+            i++;
+        }
         final ArrayAdapter entriesAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, allEntries);
+                android.R.layout.simple_list_item_1, countryArray);
         listView.setAdapter(entriesAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> av, View v, int i, long l) {
+                Toast.makeText(MainActivity.this, "Clicked item: " + listView.getItemAtPosition(i),    // If i clicked on a country then it will take me to song tracks
+                        Toast.LENGTH_SHORT).show();
+                //Country entry = (Country) listView.getItemAtPosition(i);
+                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                intent.putExtra("Code", "none");
+                //intent.putExtra("name",Tracks[i]);
+                startActivity(intent);
+            }
+        });
     }
+
+
 
     //public void selectCountry(View view) {
     //    startActivity(new Intent(this, MainActivity.class));

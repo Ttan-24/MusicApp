@@ -1,5 +1,6 @@
 package com.example.musicapp.data;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -16,8 +17,8 @@ public class Country {
         this.country_favourite = country_favourite;
     }
 
-    @PrimaryKey (autoGenerate = true)
-    private int rowID;
+    @NonNull
+    @PrimaryKey
     private String country_code;
     private String country_name;
     private String wikipedia;
@@ -35,14 +36,6 @@ public class Country {
 
     public String getWikipedia() {
         return wikipedia;
-    }
-
-    public int getRowID() {
-        return rowID;
-    }
-
-    public void setRowID(int newID) {
-        rowID = newID;
     }
 
     public float getLat() {
