@@ -1,26 +1,47 @@
 package com.example.musicapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.musicapp.data.Country;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity3 extends AppCompatActivity {
 
-    private final Track [] Tracks = new Track[]{
-            new Track(1, "Helena", "ES", 123, 2,false),
-            new Track(2, "Rock_me", "PL", 234, 3,false),
-            new Track(3, "Black_Parade", "+44", 456, 4,true),
+    private final Track[] Tracks = new Track[]{
+            new Track(1, "Helena", "ES", 123, 2, false),
+            new Track(2, "Rock_me", "PL", 234, 3, false),
+            new Track(3, "Black_Parade", "+44", 456, 4, true),
     };
 
+    String arr[] = new String[10];
+
     private ListView listView;
-//private ListView listView1;
+    //private ListView listView1;
     String stringCountry = "";
+    private String data;
+    private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,54 +67,78 @@ public class MainActivity3 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {
                 Toast.makeText(MainActivity3.this, "Clicked item: " + Tracks[i],
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),Track_Display.class);
+                Intent intent = new Intent(getApplicationContext(), Track_Display.class);
                 //intent.putExtra("name",Tracks[i]);
                 startActivity(intent);
             }
         });
 
 
+        //Intent getExtraData = getIntent();
+        String stringCountry = Tracks[0].getCountry_code();
+
+        Log.d("tag", "onCreate: " + stringCountry);
+
+        String urlAddress = createUrl(stringCountry);
+        Log.d("myurl", "urlAddress: " + urlAddress);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        new MainActivity3.DownloadWebpageTask().execute(urlAddress);
+
+        try {
+            data = downloadUrl(urlAddress);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0 ; i < 10; i ++) {
+
+            //Tracks[i] = (processData(data, i));
+            arr[i] = processData(data, i);
+            Log.d("array", arr[i]);
+        }
+
+        //Log.d("tras", );
+        listView = findViewById(R.id.listView);
+        listView.setAdapter(new Track_Adapter(this, Tracks));
     }
 
-    /*private String processData(String json) {
+
+    private String processData(String data, int i) {
         try {
-            JSONObject jsonObject = new JSONObject(json);
-            JSONArray rows = jsonObject.getJSONArray("rows");
-            JSONObject row = rows.getJSONObject(0); // index 0 is first element
-            JSONArray elements = row.getJSONArray("elements");
-            JSONObject element = elements.getJSONObject(0);
-            JSONObject distance = element.getJSONObject("distance");
-            JSONObject duration = element.getJSONObject("duration");
-            return distance.getString("text") + " (" + duration.getString("text") + ")";
+            JSONObject jsonObject = new JSONObject(data);
+            JSONObject trackObject = jsonObject.getJSONObject("message");
+            JSONObject bodyObject = trackObject.getJSONObject("body");
+            JSONArray track_list = bodyObject.getJSONArray("track_list");
+            // for loop
+
+            JSONObject trackObj = track_list.getJSONObject(i);
+            JSONObject trackObj2 = trackObj.getJSONObject("track");
+            String name = trackObj2.getString("track_name");
+            Log.d("json", name);
+            // JSONArray rows = jsonObject.getJSONArray("rows");
+            //JSONObject row = rows.getJSONObject(0); // index 0 is first element
+            //JSONArray elements = row.getJSONArray("elements");
+            //JSONObject element = elements.getJSONObject(0);
+            //JSONObject distance = element.getJSONObject("distance");
+            //JSONObject duration = element.getJSONObject("duration");
+            //return distance.getString("text") + " (" + duration.getString("text") + ")";
+            return name;
+
         } catch (JSONException jsone) {
             throw new RuntimeException(jsone);
         }
     }
 
     private String createUrl(final String stringCountry) {
-        /* try {
-            //return "https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=UK&apikey=818ca763742f1f51d06c0ec29c1b2211";
 
-            return "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" +
-                    URLEncoder.encode(origin, "UTF-8") +
-                    "&destinations=" +
-                    URLEncoder.encode(destination, "UTF-8");
+        return "https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&apikey=818ca763742f1f51d06c0ec29c1b2211&country=" +
+                stringCountry;
 
-        } catch (UnsupportedEncodingException uee) {
-            Log.e(TAG, uee.getMessage());
-            return null;
-        } */
+    }
 
-
-       // return "https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&apikey=818ca763742f1f51d06c0ec29c1b2211&country=" +
-      //          stringCountry;
-
-
-
-
-    //}
-
-    /*private String downloadUrl(final String urlAddress)
+    private String downloadUrl(final String urlAddress)
             throws IOException {
         InputStream inputStream = null;
 
@@ -139,6 +184,5 @@ public class MainActivity3 extends AppCompatActivity {
             // ... and finally, update the TextView accordingly
             //textViewJSON.setText(result);
         }
-    } */
-
+    }
 }
