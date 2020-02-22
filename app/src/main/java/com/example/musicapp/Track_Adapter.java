@@ -37,15 +37,15 @@ public class Track_Adapter extends ArrayAdapter<Track> {
         TextView trackName = view.findViewById(R.id.track_name);
         TextView commonId = view.findViewById(R.id.common_id);
         TextView countryCode = view.findViewById(R.id.country_code);
-        TextView pos = view.findViewById(R.id.position);
-        TextView dateLiked = view.findViewById(R.id.date_liked);
+        //TextView pos = view.findViewById(R.id.position);
+        //TextView dateLiked = view.findViewById(R.id.date_liked);
 
         imageButton.setClickable(track.isFavourite());
         trackName.setText(track.getTrack_name());
         commonId.setText(Integer.toString(track.getCommon_id()));
         countryCode.setText(track.getCountry_code());
-        pos.setText(Integer.toString(track.getPosition()));
-        dateLiked.setText(Integer.toString(track.getDate_liked()));
+        //pos.setText(Integer.toString(track.getPosition()));
+        //dateLiked.setText(Integer.toString(track.getDate_liked()));
 
 
         imageButton.setOnClickListener(new View.OnClickListener() {

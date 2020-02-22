@@ -4,15 +4,17 @@ public class Track {
     private int common_id;
     private int id;
     private String track_name;
+    private String track_artist;
     private String country_code;
     private int position;
     private int date_liked;
     private boolean favourite;
 
-    public Track(int common_id, int id, String track_name, String country_code, int position, int date_liked, boolean favourite) {
+    public Track(int common_id, int id, String track_name, String track_artist, String country_code, int position, int date_liked, boolean favourite) {
         this.common_id = common_id;
         this.id = id;
         this.track_name = track_name;
+        this.track_artist = track_artist;
         this.country_code = country_code;
         this.position = position;
         this.date_liked = date_liked;
@@ -27,8 +29,16 @@ public class Track {
         return track_name;
     }
 
+    public String getTrackArtist() {
+        return track_artist;
+    }
+
     public void setTrackName(String name) {
         this.track_name = name;
+    }
+
+    public void setTrackArtist(String name) {
+        this.track_artist = name;
     }
 
     public String getCountry_code() {

@@ -24,8 +24,10 @@ import java.net.URL;
 public class Track_Display extends AppCompatActivity {
     String trackName;
     String trackLyrics;
+    String trackArtistName;
     TextView trackNameText;
     TextView trackLyricsText;
+    TextView trackArtistNameText;
     String trackID;
     String data;
 
@@ -36,11 +38,14 @@ public class Track_Display extends AppCompatActivity {
         Log.d("tag", "create");
         Intent getExtraData = getIntent();
         trackName = getExtraData.getStringExtra("trackName");
+        trackArtistName = getExtraData.getStringExtra("trackArtist");
         trackID = getExtraData.getStringExtra("trackID");
         Log.d("tag", "onCreate: " + trackName);
         setContentView(R.layout.track__info);
         trackNameText = findViewById(R.id.trackName);
         trackNameText.setText(trackName);
+        trackArtistNameText = findViewById(R.id.artistName);
+        trackArtistNameText.setText(trackArtistName);
 
         String urlAddress = createUrl(trackID);
         Log.d("myurl", "urlAddress: " + urlAddress);

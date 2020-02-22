@@ -52,6 +52,10 @@ public class Country_Adapter extends ArrayAdapter<Country> {
         {
             imageButton.setImageResource(R.drawable.favourite_icon);
         }
+        else
+        {
+            imageButton.setImageResource(R.drawable.ic_favorite_border_red);
+        }
 
 
         imageButton.setOnClickListener(new View.OnClickListener() {

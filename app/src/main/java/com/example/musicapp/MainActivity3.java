@@ -39,11 +39,7 @@ public class MainActivity3 extends AppCompatActivity {
             new Track(3, "Black_Parade", "+44", 456, 4, true)
     ));*/
 
-    private ArrayList<Track> Tracks = new ArrayList<Track>(Arrays.asList(
-            new Track(1, 0, "Helena", "ES", 123, 2, false),
-            new Track(2, 0, "Rock_me", "PL", 234, 3, false),
-            new Track(3, 0, "Black_Parade", "+44", 456, 4, true)
-    ));
+    private ArrayList<Track> Tracks = new ArrayList<Track>();
 
     //public Track[] Tracks = new Track[10];
     //Tracks.add(new Track(1, "Helena", "ES", 123, 2, false));
@@ -81,6 +77,7 @@ public class MainActivity3 extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Track_Display.class);
                 intent.putExtra("trackName",Tracks.get(i).getTrack_name());
                 intent.putExtra("trackID",Integer.toString(Tracks.get(i).get_id()));
+                intent.putExtra("trackArtist",Tracks.get(i).getTrackArtist());
                 startActivity(intent);
             }
         });
@@ -102,7 +99,7 @@ public class MainActivity3 extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (int i = 0 ; i < 5; i ++) {
+        for (int i = 0 ; i < 10; i ++) {
             Tracks.add(processData(data, i));
 
             //Tracks[i] = (processData(data, i));
@@ -140,8 +137,9 @@ public class MainActivity3 extends AppCompatActivity {
             int id = Integer.parseInt(trackObj2.getString("track_id"));
             String name = trackObj2.getString("track_name");
             String country_code = trackObj2.getString("track_name");
+            String track_artist = trackObj2.getString("artist_name");
             Log.d("Adding new track: ", name);
-            Track newTrack = new Track(common_id, id, name, stringCountry, 123, 2, false);
+            Track newTrack = new Track(common_id, id, name, track_artist, stringCountry, 123, 2, false);
             return newTrack;
 
                 //tracksList.add(new Track(Integer.valueOf(trackObj1.optString("track_id")), trackObj1.optString("track_name", trackObj1.optString("track_rating")));

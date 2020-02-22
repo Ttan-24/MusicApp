@@ -73,10 +73,28 @@ public class MainActivity2 extends AppCompatActivity {
     }*/
 
     private final Country [] Countries = new Country[]{
-            new Country("US", "USA", "https://www.wikipedia.org/", 123, 2,BlogRoomDatabase.getDatabase(this).blogDao().exists("USA")),
-            new Country("SK", "South Korea", "+91", 234, 3,BlogRoomDatabase.getDatabase(this).blogDao().exists("South Korea")),
-            new Country("JP", "Japan", "+44", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Japan")),
-            new Country("IL", "United Kingdom", "+44", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("United Kingdom")),
+            new Country("AR", "Argentina", "https://en.wikipedia.org/wiki/Argentina", 123, 2,BlogRoomDatabase.getDatabase(this).blogDao().exists("Argentina")),
+            new Country("AU", "Australia", "https://en.wikipedia.org/wiki/Australia", 234, 3,BlogRoomDatabase.getDatabase(this).blogDao().exists("Australia")),
+            new Country("AT", "Austria", "https://en.wikipedia.org/wiki/Austria", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Austria")),
+            new Country("BE", "Belgium", "https://en.wikipedia.org/wiki/Belgium", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Belgium")),
+            new Country("CA", "Canada", "https://en.wikipedia.org/wiki/Canada", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Canada")),
+            new Country("DK", "Denmark", "https://en.wikipedia.org/wiki/Denmark", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Denmark")),
+            new Country("EG", "Egypt", "https://en.wikipedia.org/wiki/Egypt", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Egypt")),
+            new Country("FI", "Finland", "https://en.wikipedia.org/wiki/Finland", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Finland")),
+            new Country("FR", "France", "https://en.wikipedia.org/wiki/France", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("France")),
+            new Country("DE", "Germany", "https://en.wikipedia.org/wiki/Germany", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Germany")),
+            new Country("GR", "Greece", "https://en.wikipedia.org/wiki/Greece", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Greece")),
+            new Country("HU", "Hungary", "https://en.wikipedia.org/wiki/Hungary", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Hungary")),
+            new Country("IN", "India", "https://en.wikipedia.org/wiki/India", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("India")),
+            new Country("IE", "Ireland", "https://en.wikipedia.org/wiki/Ireland", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Ireland")),
+            new Country("IT", "Italy", "https://en.wikipedia.org/wiki/Italy", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Italy")),
+            new Country("JP", "Japan", "https://en.wikipedia.org/wiki/Japan", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Japan")),
+            new Country("SK", "South Korea", "https://en.wikipedia.org/wiki/South_Korea", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("South Korea")),
+            new Country("ES", "Spain", "https://en.wikipedia.org/wiki/Spain", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Spain")),
+            new Country("MA", "Morocco", "https://en.wikipedia.org/wiki/Morocco", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Morocco")),
+            new Country("NL", "Netherlands", "https://en.wikipedia.org/wiki/Netherlands", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Netherlands")),
+            new Country("UK", "United Kingdom", "https://en.wikipedia.org/wiki/United_Kingdom", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("United Kingdom")),
+            new Country("US", "United States of America", "https://en.wikipedia.org/wiki/United_States", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("United States of America")),
     };
 
    /* @Override
@@ -112,8 +130,8 @@ public class MainActivity2 extends AppCompatActivity {
                 Toast.makeText(MainActivity2.this, "Clicked item: " + Countries[i],    // If i clicked on a country then it will take me to song tracks
                         Toast.LENGTH_SHORT).show();
                 //Country entry = (Country) listView.getItemAtPosition(i);
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
-                intent.putExtra("Code",Countries[i].getCountry_code().toString());
+                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);  // Takes the user from one screen to another
+                intent.putExtra("Code",Countries[i].getCountry_code().toString());   // Getting the country code from here for the track list of that country
                 Log.d("tag", "adding code: " + "goes here");
                 Log.d("tag", "adding code: " + Countries[i].getCountry_code().toString());
                 //intent.putExtra("name",Tracks[i]);
