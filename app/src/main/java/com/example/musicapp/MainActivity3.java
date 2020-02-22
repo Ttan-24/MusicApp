@@ -40,9 +40,9 @@ public class MainActivity3 extends AppCompatActivity {
     ));*/
 
     private ArrayList<Track> Tracks = new ArrayList<Track>(Arrays.asList(
-            new Track(1, "Helena", "ES", 123, 2, false),
-            new Track(2, "Rock_me", "PL", 234, 3, false),
-            new Track(3, "Black_Parade", "+44", 456, 4, true)
+            new Track(1, 0, "Helena", "ES", 123, 2, false),
+            new Track(2, 0, "Rock_me", "PL", 234, 3, false),
+            new Track(3, 0, "Black_Parade", "+44", 456, 4, true)
     ));
 
     //public Track[] Tracks = new Track[10];
@@ -79,7 +79,8 @@ public class MainActivity3 extends AppCompatActivity {
                 Toast.makeText(MainActivity3.this, "Clicked item: " + Tracks.get(i),
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Track_Display.class);
-                //intent.putExtra("name",Tracks[i]);
+                intent.putExtra("trackName",Tracks.get(i).getTrack_name());
+                intent.putExtra("trackID",Integer.toString(Tracks.get(i).get_id()));
                 startActivity(intent);
             }
         });
@@ -101,11 +102,11 @@ public class MainActivity3 extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (int i = 0 ; i < 10; i ++) {
+        for (int i = 0 ; i < 5; i ++) {
             Tracks.add(processData(data, i));
 
             //Tracks[i] = (processData(data, i));
-            Log.d("gonna add", Integer.toString(i));
+            Log.d("add track index", Integer.toString(i));
             //Tracks[i] = new Track(1, "My Song", "ES", 123, 2, false);
             //Log.d("array", arr[i]);
 
@@ -135,10 +136,12 @@ public class MainActivity3 extends AppCompatActivity {
 
             JSONObject trackObj = track_list.getJSONObject(i);
             JSONObject trackObj2 = trackObj.getJSONObject("track");
+            int common_id = Integer.parseInt(trackObj2.getString("commontrack_id"));
+            int id = Integer.parseInt(trackObj2.getString("track_id"));
             String name = trackObj2.getString("track_name");
-            //int common_id = Integer.parseInt(trackObj2.getString("commontrack_id"));
+            String country_code = trackObj2.getString("track_name");
             Log.d("Adding new track: ", name);
-            Track newTrack = new Track(1, name, "XX", 123, 2, false);
+            Track newTrack = new Track(common_id, id, name, stringCountry, 123, 2, false);
             return newTrack;
 
                 //tracksList.add(new Track(Integer.valueOf(trackObj1.optString("track_id")), trackObj1.optString("track_name", trackObj1.optString("track_rating")));

@@ -73,10 +73,10 @@ public class MainActivity2 extends AppCompatActivity {
     }*/
 
     private final Country [] Countries = new Country[]{
-            new Country("US", "USA", "https://www.wikipedia.org/", 123, 2,false),
-            new Country("KR", "South Korea", "+91", 234, 3,false),
-            new Country("JP", "Japan", "+44", 456, 4,false),
-            new Country("IL", "United Kingdom", "+44", 456, 4,false),
+            new Country("US", "USA", "https://www.wikipedia.org/", 123, 2,BlogRoomDatabase.getDatabase(this).blogDao().exists("USA")),
+            new Country("SK", "South Korea", "+91", 234, 3,BlogRoomDatabase.getDatabase(this).blogDao().exists("South Korea")),
+            new Country("JP", "Japan", "+44", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("Japan")),
+            new Country("IL", "United Kingdom", "+44", 456, 4,BlogRoomDatabase.getDatabase(this).blogDao().exists("United Kingdom")),
     };
 
    /* @Override
@@ -114,6 +114,8 @@ public class MainActivity2 extends AppCompatActivity {
                 //Country entry = (Country) listView.getItemAtPosition(i);
                 Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
                 intent.putExtra("Code",Countries[i].getCountry_code().toString());
+                Log.d("tag", "adding code: " + "goes here");
+                Log.d("tag", "adding code: " + Countries[i].getCountry_code().toString());
                 //intent.putExtra("name",Tracks[i]);
                 startActivity(intent);
             }

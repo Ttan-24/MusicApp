@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 //Country entry = (Country) listView.getItemAtPosition(i);
                 Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
-                intent.putExtra("Code", "none");
-                Log.d("tag", "test");
+                intent.putExtra("Code", countryArray[i].getCountry_code().toString());
+                Log.d("tag", "adding code: " + countryArray[i].getCountry_code().toString());
                 //intent.putExtra("name",Tracks[i]);
                 startActivity(intent);
             }

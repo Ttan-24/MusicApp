@@ -2,14 +2,16 @@ package com.example.musicapp;
 
 public class Track {
     private int common_id;
+    private int id;
     private String track_name;
     private String country_code;
     private int position;
     private int date_liked;
     private boolean favourite;
 
-    public Track(int common_id, String track_name, String country_code, int position, int date_liked, boolean favourite) {
+    public Track(int common_id, int id, String track_name, String country_code, int position, int date_liked, boolean favourite) {
         this.common_id = common_id;
+        this.id = id;
         this.track_name = track_name;
         this.country_code = country_code;
         this.position = position;
@@ -18,6 +20,8 @@ public class Track {
     }
 
     public int getCommon_id() { return common_id;  }
+
+    public int get_id() { return id;  }
 
     public String getTrack_name() {
         return track_name;

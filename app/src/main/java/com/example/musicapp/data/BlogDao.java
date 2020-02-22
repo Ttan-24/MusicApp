@@ -22,6 +22,9 @@ public interface BlogDao {
     @Query("SELECT * from entries where country_name == :country_name")
     public boolean isFavorite(String country_name);
 
+    @Query("SELECT COUNT(1) FROM entries WHERE country_name = :country_name;")
+    public boolean exists(String country_name);
+
     @Query("SELECT COUNT(*) FROM entries" )
     int count();
 
