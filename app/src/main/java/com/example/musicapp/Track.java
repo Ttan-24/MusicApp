@@ -23,6 +23,10 @@ public class Track {
         return track_name;
     }
 
+    public void setTrackName(String name) {
+        this.track_name = name;
+    }
+
     public String getCountry_code() {
         return country_code;
     }

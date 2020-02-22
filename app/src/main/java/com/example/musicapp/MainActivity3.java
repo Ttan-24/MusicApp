@@ -27,18 +27,26 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity3 extends AppCompatActivity {
 
    //ArrayList<Track> tracksList = null;
 
-    private final Track[] Tracks = new Track[]{
+    /*private ArrayList<Track> Tracks = new ArrayList<Track>(Arrays.asList(
             new Track(1, "Helena", "ES", 123, 2, false),
             new Track(2, "Rock_me", "PL", 234, 3, false),
-            new Track(3, "Black_Parade", "+44", 456, 4, true),
-    };
+            new Track(3, "Black_Parade", "+44", 456, 4, true)
+    ));*/
 
-    String arr[] = new String[10];
+    private ArrayList<Track> Tracks = new ArrayList<Track>(Arrays.asList(
+            new Track(1, "Helena", "ES", 123, 2, false),
+            new Track(2, "Rock_me", "PL", 234, 3, false),
+            new Track(3, "Black_Parade", "+44", 456, 4, true)
+    ));
+
+    //public Track[] Tracks = new Track[10];
+    //Tracks.add(new Track(1, "Helena", "ES", 123, 2, false));
 
     private ListView listView;
     //private ListView listView1;
@@ -68,7 +76,7 @@ public class MainActivity3 extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {
-                Toast.makeText(MainActivity3.this, "Clicked item: " + Tracks[i],
+                Toast.makeText(MainActivity3.this, "Clicked item: " + Tracks.get(i),
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Track_Display.class);
                 //intent.putExtra("name",Tracks[i]);
@@ -77,8 +85,6 @@ public class MainActivity3 extends AppCompatActivity {
         });
 
 
-        //Intent getExtraData = getIntent();
-        String stringCountry = Tracks[0].getCountry_code();
 
         Log.d("tag", "onCreate: " + stringCountry);
 
@@ -96,14 +102,17 @@ public class MainActivity3 extends AppCompatActivity {
             e.printStackTrace();
         }
         for (int i = 0 ; i < 10; i ++) {
+            Tracks.add(processData(data, i));
 
             //Tracks[i] = (processData(data, i));
-            arr[i] = processData(data, i);
+            Log.d("gonna add", Integer.toString(i));
+            //Tracks[i] = new Track(1, "My Song", "ES", 123, 2, false);
             //Log.d("array", arr[i]);
 
             //TextView.append(arr[i]);
             //myTextView.append(myArray[i]);
         }
+        Log.d("array", Tracks.toString());
 
         //Log.d("tras", );
         listView = findViewById(R.id.listView);
@@ -112,7 +121,7 @@ public class MainActivity3 extends AppCompatActivity {
     }
 
 
-    private String processData(String data, int i) {
+    private Track processData(String data, int i) {
         try {
             JSONObject jsonObject = new JSONObject(data);
             JSONObject trackObject = jsonObject.getJSONObject("message");
@@ -124,11 +133,13 @@ public class MainActivity3 extends AppCompatActivity {
            // for (int m = 0; m < track_list.length(); m++){
                 //trackObj1 = (JSONObject) track_list.get(i);
 
-                JSONObject trackObj = track_list.getJSONObject(i);
-                JSONObject trackObj2 = trackObj.getJSONObject("track");
-                String name = trackObj2.getString("track_name");
-                Log.d("json", name);
-                return name;
+            JSONObject trackObj = track_list.getJSONObject(i);
+            JSONObject trackObj2 = trackObj.getJSONObject("track");
+            String name = trackObj2.getString("track_name");
+            //int common_id = Integer.parseInt(trackObj2.getString("commontrack_id"));
+            Log.d("Adding new track: ", name);
+            Track newTrack = new Track(1, name, "XX", 123, 2, false);
+            return newTrack;
 
                 //tracksList.add(new Track(Integer.valueOf(trackObj1.optString("track_id")), trackObj1.optString("track_name", trackObj1.optString("track_rating")));
             //}

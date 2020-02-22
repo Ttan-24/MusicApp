@@ -2,6 +2,7 @@ package com.example.musicapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 .getDatabase(this)
                 .blogDao()
                 .getAllEntries();
-        Country[] countryArray = new Country[allEntries.size()];
+        final Country[] countryArray = new Country[allEntries.size()];
         int i = 0;
         for (Country country : allEntries
              ) {
@@ -60,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {
-                Toast.makeText(MainActivity.this, "Clicked item: " + listView.getItemAtPosition(i),    // If i clicked on a country then it will take me to song tracks
+                Toast.makeText(MainActivity.this, "Clicked item: " + countryArray[i].getCountry_name(),    // If i clicked on a country then it will take me to song tracks
                         Toast.LENGTH_SHORT).show();
                 //Country entry = (Country) listView.getItemAtPosition(i);
                 Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
                 intent.putExtra("Code", "none");
+                Log.d("tag", "test");
                 //intent.putExtra("name",Tracks[i]);
                 startActivity(intent);
             }

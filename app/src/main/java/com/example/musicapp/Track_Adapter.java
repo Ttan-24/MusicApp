@@ -11,9 +11,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 // the Track_Adapter can only be used to manage items of type Track
 public class Track_Adapter extends ArrayAdapter<Track> {
-    public Track_Adapter (Context context, Track[] Tracks){
+    public Track_Adapter (Context context, ArrayList<Track> Tracks){
         super(context, R.layout.activity_track, Tracks);
     }
 

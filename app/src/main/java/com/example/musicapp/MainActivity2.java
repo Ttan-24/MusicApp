@@ -73,9 +73,10 @@ public class MainActivity2 extends AppCompatActivity {
     }*/
 
     private final Country [] Countries = new Country[]{
-            new Country("PL", "USA", "https://www.wikipedia.org/", 123, 2,false),
-            new Country("ES", "South Korea", "+91", 234, 3,false),
-            new Country("IL", "Japan", "+44", 456, 4,false),
+            new Country("US", "USA", "https://www.wikipedia.org/", 123, 2,false),
+            new Country("KR", "South Korea", "+91", 234, 3,false),
+            new Country("JP", "Japan", "+44", 456, 4,false),
+            new Country("IL", "United Kingdom", "+44", 456, 4,false),
     };
 
    /* @Override
@@ -112,7 +113,7 @@ public class MainActivity2 extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 //Country entry = (Country) listView.getItemAtPosition(i);
                 Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
-                intent.putExtra("Code",Countries[i].getCountry_code());
+                intent.putExtra("Code",Countries[i].getCountry_code().toString());
                 //intent.putExtra("name",Tracks[i]);
                 startActivity(intent);
             }
