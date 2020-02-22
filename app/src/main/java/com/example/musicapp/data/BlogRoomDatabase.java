@@ -6,6 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.musicapp.MainActivity3;
+
 @Database(entities = {Country.class}, version = 1)
 public abstract class BlogRoomDatabase extends RoomDatabase {
 
@@ -24,10 +26,25 @@ public abstract class BlogRoomDatabase extends RoomDatabase {
                             BlogRoomDatabase.class, "blog_database")
                             .allowMainThreadQueries()
                             .build();
+                            ////ADDED
+                            //INSTANCE.populate();
                 }
             }
         }
         return INSTANCE;
     }
+
+   ////ADDED
+   //private void populate() {
+   //    if (blogDao().count() == 0) {
+   //        runInTransaction(new Runnable() {
+   //            @Override
+   //            public void run() {
+   //                BlogDao blogDao = blogDao();
+   //                blogDao.insert(new Country("AE","US", "http", 2, 2,false));
+   //            }
+   //        });
+   //    }
+   //}
 
 }

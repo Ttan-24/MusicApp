@@ -1,5 +1,6 @@
 package com.example.musicapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -64,19 +65,18 @@ public class MainActivity2 extends AppCompatActivity {
         }
     }; */
 
+
+    /*public boolean countryIsFavourite(String countryName) {
+        boolean isFavourite = BlogRoomDatabase.getDatabase(getApplicationContext()).blogDao().isFavorite(countryName);
+        Log.d("", "hmmmm" + isFavourite);
+        return isFavourite;
+    }*/
+
     private final Country [] Countries = new Country[]{
-            new Country("PL", "USA", "+44", 123, 2,true),
+            new Country("PL", "USA", "https://www.wikipedia.org/", 123, 2,false),
             new Country("ES", "South Korea", "+91", 234, 3,false),
-            new Country("IL", "Japan", "+44", 456, 4,true),
+            new Country("IL", "Japan", "+44", 456, 4,false),
     };
-
-    // access database here?
-   /* public void accessDatabase() {
-
-        BlogRoomDatabase
-                .getDatabase(getCo())
-                .blogDao().delete(country);
-    } */
 
    /* @Override
     protected void onResume() {

@@ -26,8 +26,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class MainActivity3 extends AppCompatActivity {
+
+   //ArrayList<Track> tracksList = null;
 
     private final Track[] Tracks = new Track[]{
             new Track(1, "Helena", "ES", 123, 2, false),
@@ -96,12 +99,16 @@ public class MainActivity3 extends AppCompatActivity {
 
             //Tracks[i] = (processData(data, i));
             arr[i] = processData(data, i);
-            Log.d("array", arr[i]);
+            //Log.d("array", arr[i]);
+
+            //TextView.append(arr[i]);
+            //myTextView.append(myArray[i]);
         }
 
         //Log.d("tras", );
         listView = findViewById(R.id.listView);
         listView.setAdapter(new Track_Adapter(this, Tracks));
+
     }
 
 
@@ -111,12 +118,26 @@ public class MainActivity3 extends AppCompatActivity {
             JSONObject trackObject = jsonObject.getJSONObject("message");
             JSONObject bodyObject = trackObject.getJSONObject("body");
             JSONArray track_list = bodyObject.getJSONArray("track_list");
+            //JSONObject trackObj1 = null;
             // for loop
+           // tracksList = new ArrayList<>();
+           // for (int m = 0; m < track_list.length(); m++){
+                //trackObj1 = (JSONObject) track_list.get(i);
 
-            JSONObject trackObj = track_list.getJSONObject(i);
-            JSONObject trackObj2 = trackObj.getJSONObject("track");
-            String name = trackObj2.getString("track_name");
-            Log.d("json", name);
+                JSONObject trackObj = track_list.getJSONObject(i);
+                JSONObject trackObj2 = trackObj.getJSONObject("track");
+                String name = trackObj2.getString("track_name");
+                Log.d("json", name);
+                return name;
+
+                //tracksList.add(new Track(Integer.valueOf(trackObj1.optString("track_id")), trackObj1.optString("track_name", trackObj1.optString("track_rating")));
+            //}
+
+            //listView.setAdapter(new Track_Adapter(MainActivity3.this, tracksList));
+            //JSONObject trackObj = track_list.getJSONObject(i);
+            //JSONObject trackObj2 = trackObj.getJSONObject("track");
+           // String name = trackObj2.getString("track_name");
+            //Log.d("json", name);
             // JSONArray rows = jsonObject.getJSONArray("rows");
             //JSONObject row = rows.getJSONObject(0); // index 0 is first element
             //JSONArray elements = row.getJSONArray("elements");
@@ -124,7 +145,8 @@ public class MainActivity3 extends AppCompatActivity {
             //JSONObject distance = element.getJSONObject("distance");
             //JSONObject duration = element.getJSONObject("duration");
             //return distance.getString("text") + " (" + duration.getString("text") + ")";
-            return name;
+            //return name;
+
 
         } catch (JSONException jsone) {
             throw new RuntimeException(jsone);
