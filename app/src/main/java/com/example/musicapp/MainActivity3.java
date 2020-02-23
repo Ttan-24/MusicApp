@@ -75,6 +75,7 @@ public class MainActivity3 extends AppCompatActivity {
                 Toast.makeText(MainActivity3.this, "Clicked item: " + Tracks.get(i),
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Track_Display.class);
+                // puts extra information of track inside the intent
                 intent.putExtra("trackName",Tracks.get(i).getTrack_name());
                 intent.putExtra("trackID",Integer.toString(Tracks.get(i).get_id()));
                 intent.putExtra("trackArtist",Tracks.get(i).getTrackArtist());
@@ -100,6 +101,7 @@ public class MainActivity3 extends AppCompatActivity {
             e.printStackTrace();
         }
         for (int i = 0 ; i < 10; i ++) {
+            // Adding track to the track list
             Tracks.add(processData(data, i));
 
             //Tracks[i] = (processData(data, i));
@@ -121,44 +123,26 @@ public class MainActivity3 extends AppCompatActivity {
 
     private Track processData(String data, int i) {
         try {
+            // main json object
             JSONObject jsonObject = new JSONObject(data);
+
+            // json functions
             JSONObject trackObject = jsonObject.getJSONObject("message");
             JSONObject bodyObject = trackObject.getJSONObject("body");
             JSONArray track_list = bodyObject.getJSONArray("track_list");
-            //JSONObject trackObj1 = null;
-            // for loop
-           // tracksList = new ArrayList<>();
-           // for (int m = 0; m < track_list.length(); m++){
-                //trackObj1 = (JSONObject) track_list.get(i);
-
             JSONObject trackObj = track_list.getJSONObject(i);
             JSONObject trackObj2 = trackObj.getJSONObject("track");
+
+            // track information
             int common_id = Integer.parseInt(trackObj2.getString("commontrack_id"));
             int id = Integer.parseInt(trackObj2.getString("track_id"));
             String name = trackObj2.getString("track_name");
-            String country_code = trackObj2.getString("track_name");
             String track_artist = trackObj2.getString("artist_name");
             Log.d("Adding new track: ", name);
+
+            // Construct track object
             Track newTrack = new Track(common_id, id, name, track_artist, stringCountry, 123, 2, false);
             return newTrack;
-
-                //tracksList.add(new Track(Integer.valueOf(trackObj1.optString("track_id")), trackObj1.optString("track_name", trackObj1.optString("track_rating")));
-            //}
-
-            //listView.setAdapter(new Track_Adapter(MainActivity3.this, tracksList));
-            //JSONObject trackObj = track_list.getJSONObject(i);
-            //JSONObject trackObj2 = trackObj.getJSONObject("track");
-           // String name = trackObj2.getString("track_name");
-            //Log.d("json", name);
-            // JSONArray rows = jsonObject.getJSONArray("rows");
-            //JSONObject row = rows.getJSONObject(0); // index 0 is first element
-            //JSONArray elements = row.getJSONArray("elements");
-            //JSONObject element = elements.getJSONObject(0);
-            //JSONObject distance = element.getJSONObject("distance");
-            //JSONObject duration = element.getJSONObject("duration");
-            //return distance.getString("text") + " (" + duration.getString("text") + ")";
-            //return name;
-
 
         } catch (JSONException jsone) {
             throw new RuntimeException(jsone);
