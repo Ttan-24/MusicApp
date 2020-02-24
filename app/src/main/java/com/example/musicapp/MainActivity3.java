@@ -58,14 +58,6 @@ public class MainActivity3 extends AppCompatActivity {
         stringCountry = getExtraData.getStringExtra("Code");
         Log.d("tag", "onCreate: " + stringCountry);
 
-        //String urlAddress = createUrl(stringCountry);
-        //Log.d("myurl", "urlAddress: " + urlAddress);
-
-        //new DownloadWebpageTask().execute(urlAddress);
-        //BottomNavigationView navView = findViewById(R.id.nav_view);
-        //mTextMessage = findViewById(R.id.message);
-        //navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         listView = (ListView) findViewById(R.id.listView);
 
         listView.setAdapter(new Track_Adapter(this, Tracks));

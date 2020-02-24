@@ -72,11 +72,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-    //public void selectCountry(View view) {
-    //    startActivity(new Intent(this, MainActivity.class));
-    //}
-
 }
