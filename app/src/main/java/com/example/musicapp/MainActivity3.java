@@ -54,6 +54,7 @@ public class MainActivity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        ////////////EXPLANATION NEEDED?
         Intent getExtraData = getIntent();
         stringCountry = getExtraData.getStringExtra("Code");
         Log.d("tag", "onCreate: " + stringCountry);
@@ -61,6 +62,8 @@ public class MainActivity3 extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
 
         listView.setAdapter(new Track_Adapter(this, Tracks));
+
+        //////////////When the user clicks on the selected track  
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {

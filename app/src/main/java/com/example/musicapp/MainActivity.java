@@ -30,19 +30,20 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.list_view);
 
+        ////////When select button is clicked it takes the user from 1 screen to another screen
         button1 = findViewById(R.id.select_country);
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v) {
-                Intent toy = new Intent(MainActivity.this,MainActivity2.class);
-                startActivity(toy);
+                Intent changeScreen = new Intent(MainActivity.this,MainActivity2.class);
+                startActivity(changeScreen);
             }
         });
     }
     @Override
     protected void onResume() {
         super.onResume();
-
+        /////////////////// EXPLANATION NEEDED?
         List<Country> allEntries = BlogRoomDatabase
                 .getDatabase(this)
                 .blogDao()
@@ -54,20 +55,22 @@ public class MainActivity extends AppCompatActivity {
             countryArray[i] = country;
             i++;
         }
+
+        ///////////////////EXPLANATION NEEDED?
         final ArrayAdapter entriesAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, countryArray);
         listView.setAdapter(entriesAdapter);
 
+        ////////// If the user clicks in the favourite list of countries then it will take the user directly to the song tracks screen
+        ///////// WHAT INTENT PUT EXTRA DOES?
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {
-                Toast.makeText(MainActivity.this, "Clicked item: " + countryArray[i].getCountry_name(),    // If i clicked on a country then it will take me to song tracks
+                Toast.makeText(MainActivity.this, "Clicked item: " + countryArray[i].getCountry_name(),
                         Toast.LENGTH_SHORT).show();
-                //Country entry = (Country) listView.getItemAtPosition(i);
                 Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
                 intent.putExtra("Code", countryArray[i].getCountry_code().toString());
                 Log.d("tag", "adding code: " + countryArray[i].getCountry_code().toString());
-                //intent.putExtra("name",Tracks[i]);
                 startActivity(intent);
             }
         });
