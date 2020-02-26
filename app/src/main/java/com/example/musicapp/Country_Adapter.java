@@ -37,15 +37,15 @@ public class Country_Adapter extends ArrayAdapter<Country> {
         final TextView countryName = view.findViewById(R.id.country_name);
         TextView codeCountry = view.findViewById(R.id.country_code);
         TextView wikipedia = view.findViewById(R.id.wikipedia);
-        TextView lat = view.findViewById(R.id.lat);
-        TextView lng = view.findViewById(R.id.lng);
+        //TextView lat = view.findViewById(R.id.lat);
+        //TextView lng = view.findViewById(R.id.lng);
 
         imageButton.setClickable(country.isCountry_favourite());
         countryName.setText(country.getCountry_name());
         codeCountry.setText(country.getCountry_code());
         wikipedia.setText(country.getWikipedia());
-        lat.setText(Float.toString(country.getLat()));
-        lng.setText(Float.toString(country.getLng()));
+        //lat.setText(Float.toString(country.getLat()));
+        //lng.setText(Float.toString(country.getLng()));
 
         ////////the user can mark and unmark as favourite/liked. The list of favourite/liked items must be accessible in another view.
         boolean isFavourite = country.isCountry_favourite();

@@ -1,8 +1,10 @@
 package com.example.musicapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +41,26 @@ public class ViewTopTracks extends AppCompatActivity {
     String stringCountry = "";
     private String data;
     private TextView text;
+
+    ProgressDialog progressDialog;
+
+    public void onStart()
+    {
+        super.onStart();
+        // Creating a progress dialog
+        progressDialog = ProgressDialog.show(this,"Please Wait","Processing...", true);
+        CountDownTimer timer = new CountDownTimer(1000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
