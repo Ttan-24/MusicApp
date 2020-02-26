@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        /////////////////// EXPLANATION NEEDED?
+        ///////////Displays all the entries of the favourite database
         List<Country> allEntries = BlogRoomDatabase
                 .getDatabase(this)
                 .blogDao()
@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
             i++;
         }
 
-        ///////////////////EXPLANATION NEEDED?
+        //////////Sets the adapter for the favourite countries
         final ArrayAdapter entriesAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, countryArray);
         listView.setAdapter(entriesAdapter);
 
         ////////// If the user clicks in the favourite list of countries then it will take the user directly to the song tracks screen
-        ///////// WHAT INTENT PUT EXTRA DOES?
+        ///////// intent put extra lets to choose the data to put in another activity by storing it in the intent
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {

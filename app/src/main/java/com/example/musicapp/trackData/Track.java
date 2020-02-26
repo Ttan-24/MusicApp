@@ -1,14 +1,12 @@
 package com.example.musicapp.trackData;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "trackEntries")
 public class Track {
-    private int common_id;
-    private int id;
-    private String track_name;
-    private String track_artist;
-    private String country_code;
-    private int position;
-    private int date_liked;
-    private boolean favourite;
+
 
     public Track(int common_id, int id, String track_name, String track_artist, String country_code, int position, int date_liked, boolean favourite) {
         this.common_id = common_id;
@@ -20,6 +18,17 @@ public class Track {
         this.date_liked = date_liked;
         this.favourite = favourite;
     }
+
+    @NonNull
+    @PrimaryKey
+    private int common_id;
+    private int id;
+    private String track_name;
+    private String track_artist;
+    private String country_code;
+    private int position;
+    private int date_liked;
+    private boolean favourite;
 
     public int getCommon_id() { return common_id;  }
 
