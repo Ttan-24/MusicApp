@@ -48,7 +48,6 @@ public class ViewAllCountries extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listView);
 
-        ////////////EXPLANATION NEEDED?
         listView.setAdapter(new Country_Adapter(this, Countries));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
