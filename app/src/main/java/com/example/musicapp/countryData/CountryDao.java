@@ -1,4 +1,4 @@
-package com.example.musicapp.data;
+package com.example.musicapp.countryData;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -10,7 +10,7 @@ import java.util.List;
 import static androidx.room.OnConflictStrategy.REPLACE;
 
 @Dao
-public interface BlogDao {
+public interface CountryDao {
 
 
     @Insert (onConflict = REPLACE)

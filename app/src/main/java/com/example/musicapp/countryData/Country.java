@@ -1,4 +1,4 @@
-package com.example.musicapp.data;
+package com.example.musicapp.countryData;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

@@ -8,13 +8,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.musicapp.data.BlogRoomDatabase;
-import com.example.musicapp.data.Country;
+import com.example.musicapp.countryData.CountryRoomDatabase;
+import com.example.musicapp.countryData.Country;
 
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         ///////////Displays all the entries of the favourite database
-        List<Country> allEntries = BlogRoomDatabase
+        List<Country> allEntries = CountryRoomDatabase
                 .getDatabase(this)
                 .blogDao()
                 .getAllEntries();
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(entriesAdapter);
 
         ////////// If the user clicks in the favourite list of countries then it will take the user directly to the song tracks screen
-        ///////// intent put extra lets to choose the data to put in another activity by storing it in the intent
+        ///////// intent put extra lets to choose the countryData to put in another activity by storing it in the intent
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {

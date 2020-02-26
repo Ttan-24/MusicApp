@@ -89,7 +89,7 @@ public class MainActivity3 extends AppCompatActivity {
             // Adding track to the track list
             Tracks.add(processData(data, i));
 
-            //Tracks[i] = (processData(data, i));
+            //Tracks[i] = (processData(countryData, i));
             Log.d("add track index", Integer.toString(i));
             //Tracks[i] = new Track(1, "My Song", "ES", 123, 2, false);
             //Log.d("array", arr[i]);
@@ -176,7 +176,7 @@ public class MainActivity3 extends AppCompatActivity {
         @Override protected String doInBackground(String... urls) {
             // execute in background, in separate thread – cannot edit the UI
             try {
-                // ... then call the method that connects and fetches the data ...
+                // ... then call the method that connects and fetches the countryData ...
                 return downloadUrl(urls[0]);
             } catch (IOException ioe) {
                 return "Error: " + ioe;

@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.musicapp.data.BlogRoomDatabase;
-import com.example.musicapp.data.Country;
+import com.example.musicapp.countryData.CountryRoomDatabase;
+import com.example.musicapp.countryData.Country;
 
 public class Country_Adapter extends ArrayAdapter<Country> {
     public Country_Adapter (Context context, Country[] Countries){
@@ -69,7 +69,7 @@ public class Country_Adapter extends ArrayAdapter<Country> {
                     imageButton.setImageResource(R.drawable.ic_favorite_border_red);
                     country.setCountry_favourite(false);
                     Toast.makeText(getContext(), "Deleted " + country + " to: ", Toast.LENGTH_SHORT).show();
-                    BlogRoomDatabase
+                    CountryRoomDatabase
                             .getDatabase(getContext())
                             .blogDao().delete(country);
                 } else {
@@ -78,7 +78,7 @@ public class Country_Adapter extends ArrayAdapter<Country> {
                     imageButton.setImageResource(R.drawable.favourite_icon);
                     country.setCountry_favourite(true);
                     Toast.makeText(getContext(), "Checked " + country + " to: ", Toast.LENGTH_SHORT).show();
-                    BlogRoomDatabase
+                    CountryRoomDatabase
                             .getDatabase(getContext())
                             .blogDao().insert(country);
 

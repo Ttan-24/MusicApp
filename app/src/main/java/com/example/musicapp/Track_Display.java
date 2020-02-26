@@ -124,7 +124,7 @@ public class Track_Display extends AppCompatActivity {
         @Override protected String doInBackground(String... urls) {
             // execute in background, in separate thread – cannot edit the UI
             try {
-                // ... then call the method that connects and fetches the data ...
+                // ... then call the method that connects and fetches the countryData ...
                 return downloadUrl(urls[0]);
             } catch (IOException ioe) {
                 return "Error: " + ioe;
