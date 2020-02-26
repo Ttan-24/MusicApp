@@ -1,4 +1,4 @@
-package com.example.musicapp;
+package com.example.musicapp.trackData;
 
 public class Track {
     private int common_id;

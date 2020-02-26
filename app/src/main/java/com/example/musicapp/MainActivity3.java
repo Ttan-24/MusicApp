@@ -7,14 +7,13 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.musicapp.data.Country;
+import com.example.musicapp.trackData.Track;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +26,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -63,7 +61,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         listView.setAdapter(new Track_Adapter(this, Tracks));
 
-        //////////////When the user clicks on the selected track  
+        //////////////When the user clicks on the selected track
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {

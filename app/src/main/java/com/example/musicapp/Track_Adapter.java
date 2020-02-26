@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.musicapp.trackData.Track;
+
 import java.util.ArrayList;
 
 // the Track_Adapter can only be used to manage items of type Track
