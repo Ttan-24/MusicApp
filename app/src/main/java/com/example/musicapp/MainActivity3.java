@@ -28,15 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity3 extends AppCompatActivity {
-
-   //ArrayList<Track> tracksList = null;
-
-    /*private ArrayList<Track> Tracks = new ArrayList<Track>(Arrays.asList(
-            new Track(1, "Helena", "ES", 123, 2, false),
-            new Track(2, "Rock_me", "PL", 234, 3, false),
-            new Track(3, "Black_Parade", "+44", 456, 4, true)
-    ));*/
-
+    
     private ArrayList<Track> Tracks = new ArrayList<Track>();
 
     //public Track[] Tracks = new Track[10];
