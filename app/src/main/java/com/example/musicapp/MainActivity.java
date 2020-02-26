@@ -20,7 +20,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
-    public Button button1;
+    public Button countryButton;
+    public Button trackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +31,24 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.list_view);
 
         ////////When select button is clicked it takes the user from 1 screen to another screen
-        button1 = findViewById(R.id.select_country);
-        button1.setOnClickListener(new View.OnClickListener(){
+        countryButton = findViewById(R.id.select_country);
+        countryButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v) {
                 Intent changeScreen = new Intent(MainActivity.this,MainActivity2.class);
                 startActivity(changeScreen);
             }
         });
+
+        trackButton = findViewById(R.id.favorite_tracks);
+        trackButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View v) {
+                Intent changeScreen = new Intent(MainActivity.this,MainActivity4.class);
+                startActivity(changeScreen);
+            }
+        });
+
     }
     @Override
     protected void onResume() {
