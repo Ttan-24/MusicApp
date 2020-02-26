@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 @Database(entities = {Country.class}, version = 1)
 public abstract class CountryRoomDatabase extends RoomDatabase {
 
-    public abstract CountryDao blogDao(); // provides an abstract method that returns an instance of that interface. It's abstract because this method
+    public abstract CountryDao countryDao(); // provides an abstract method that returns an instance of that interface. It's abstract because this method
     // will never be called directly. Instead, there will be some generated code that's created by the Room database in the background and that's the
     // version of the method that you'll be calling
 
@@ -21,7 +21,7 @@ public abstract class CountryRoomDatabase extends RoomDatabase {
                                                                            // different areas of the application
                 if (INSTANCE == null) {                                    // check again if the instance is still nul and then create the database reference
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            CountryRoomDatabase.class, "blog_database")
+                            CountryRoomDatabase.class, "country_database")
                             .allowMainThreadQueries()
                             .build();
                             ////ADDED
@@ -34,12 +34,12 @@ public abstract class CountryRoomDatabase extends RoomDatabase {
 
    ////ADDED
    //private void populate() {
-   //    if (blogDao().count() == 0) {
+   //    if (countryDao().count() == 0) {
    //        runInTransaction(new Runnable() {
    //            @Override
    //            public void run() {
-   //                CountryDao blogDao = blogDao();
-   //                blogDao.insert(new Country("AE","US", "http", 2, 2,false));
+   //                CountryDao countryDao = countryDao();
+   //                countryDao.insert(new Country("AE","US", "http", 2, 2,false));
    //            }
    //        });
    //    }

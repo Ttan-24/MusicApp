@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         countryButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v) {
-                Intent changeScreen = new Intent(MainActivity.this,MainActivity2.class);
+                Intent changeScreen = new Intent(MainActivity.this, ViewAllCountries.class);
                 startActivity(changeScreen);
             }
         });
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         trackButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v) {
-                Intent changeScreen = new Intent(MainActivity.this,MainActivity4.class);
+                Intent changeScreen = new Intent(MainActivity.this, ViewFavoriteTrackList.class);
                 startActivity(changeScreen);
             }
         });
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         ///////////Displays all the entries of the favourite database
         List<Country> allEntries = CountryRoomDatabase
                 .getDatabase(this)
-                .blogDao()
+                .countryDao()
                 .getAllEntries();
         final Country[] countryArray = new Country[allEntries.size()];
         int i = 0;
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {
                 Toast.makeText(MainActivity.this, "Clicked item: " + countryArray[i].getCountry_name(),
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                Intent intent = new Intent(getApplicationContext(), ViewTopTracks.class);
                 intent.putExtra("Code", countryArray[i].getCountry_code().toString());
                 Log.d("tag", "adding code: " + countryArray[i].getCountry_code().toString());
                 startActivity(intent);

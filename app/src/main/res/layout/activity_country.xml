@@ -6,7 +6,7 @@
     android:descendantFocusability="blocksDescendants"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity2">
+    tools:context=".ViewAllCountries">
 
     <TextView
         android:id="@+id/country_name"

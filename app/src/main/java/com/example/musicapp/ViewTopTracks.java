@@ -27,7 +27,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity3 extends AppCompatActivity {
+public class ViewTopTracks extends AppCompatActivity {
     
     private ArrayList<Track> Tracks = new ArrayList<Track>();
 
@@ -57,7 +57,7 @@ public class MainActivity3 extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int i, long l) {
-                Toast.makeText(MainActivity3.this, "Clicked item: " + Tracks.get(i),
+                Toast.makeText(ViewTopTracks.this, "Clicked item: " + Tracks.get(i),
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Track_Display.class);
                 // puts extra information of track inside the intent
@@ -78,7 +78,7 @@ public class MainActivity3 extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        new MainActivity3.DownloadWebpageTask().execute(urlAddress);
+        new ViewTopTracks.DownloadWebpageTask().execute(urlAddress);
 
         try {
             data = downloadUrl(urlAddress);

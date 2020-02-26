@@ -8,26 +8,22 @@ import androidx.room.PrimaryKey;
 public class Track {
 
 
-    public Track(int common_id, int id, String track_name, String track_artist, String country_code, int position, int date_liked, boolean favourite) {
-        this.common_id = common_id;
-        this.id = id;
-        this.track_name = track_name;
-        this.track_artist = track_artist;
-        this.country_code = country_code;
-        this.position = position;
-        this.date_liked = date_liked;
-        this.favourite = favourite;
-    }
+
 
     @NonNull
     @PrimaryKey
-    private int common_id;
-    private int id;
-    private String track_name;
-    private String track_artist;
+    protected int common_id;
+    protected int id;
+    protected String track_name;
+    protected String track_artist;
     private String country_code;
     private int position;
     private int date_liked;
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
+    }
+
     private boolean favourite;
 
     public int getCommon_id() { return common_id;  }
@@ -42,7 +38,7 @@ public class Track {
         return track_artist;
     }
 
-    public void setTrackName(String name) {
+      public void setTrackName(String name) {
         this.track_name = name;
     }
 
@@ -64,6 +60,17 @@ public class Track {
 
     public boolean isFavourite() {
         return favourite;
+    }
+
+    public Track(int common_id, int id, String track_name, String track_artist, String country_code, int position, int date_liked, boolean favourite) {
+        this.common_id = common_id;
+        this.id = id;
+        this.track_name = track_name;
+        this.track_artist = track_artist;
+        this.country_code = country_code;
+        this.position = position;
+        this.date_liked = date_liked;
+        this.favourite = favourite;
     }
 
     /*public void setFavourite(boolean choice) {

@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity4"></activity>
+        <activity android:name=".ViewFavoriteTrackList"></activity>
         <activity android:name=".Select_Country" />
-        <activity android:name=".MainActivity2" />
-        <activity android:name=".MainActivity3" />
+        <activity android:name=".ViewAllCountries" />
+        <activity android:name=".ViewTopTracks" />
         <activity android:name=".Track_Display" />
         <activity android:name=".trackData.Track" />
         <activity

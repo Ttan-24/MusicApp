@@ -71,7 +71,7 @@ public class Country_Adapter extends ArrayAdapter<Country> {
                     Toast.makeText(getContext(), "Deleted " + country + " to: ", Toast.LENGTH_SHORT).show();
                     CountryRoomDatabase
                             .getDatabase(getContext())
-                            .blogDao().delete(country);
+                            .countryDao().delete(country);
                 } else {
                     ///////the user can mark the countries as its favourite by clicking the icon button which shades to red to let the user know.
                     /////// the country marked as favourite displays into favourite list in the 1st screen
@@ -80,7 +80,7 @@ public class Country_Adapter extends ArrayAdapter<Country> {
                     Toast.makeText(getContext(), "Checked " + country + " to: ", Toast.LENGTH_SHORT).show();
                     CountryRoomDatabase
                             .getDatabase(getContext())
-                            .blogDao().insert(country);
+                            .countryDao().insert(country);
 
                 }
 
